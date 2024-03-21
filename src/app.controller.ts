@@ -11,6 +11,7 @@ import {
 import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
+import { Request } from 'express';
 
 class Student {
   readonly name: string;
