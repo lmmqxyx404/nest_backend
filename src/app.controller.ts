@@ -1,7 +1,9 @@
 import {
+  Body,
   Controller,
   Get,
   Post,
+  Query,
   Req,
   UploadedFile,
   UseInterceptors,
@@ -10,6 +12,9 @@ import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 
+class Student {
+  readonly name: string;
+}
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -19,10 +24,20 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/world')
-  getWorld(): string {
-    return this.appService.getWorld();
+  // 注意 post 方法默认解析的参数是 json,不是form_data
+  @Post('/post')
+  @UseInterceptors(FileInterceptor('name'))
+  postHello(@Body() obj: Student): string {
+    console.log(obj);
+
+    return this.appService.postHello(obj);
   }
+
+  @Get('/world')
+  getWorld(@Query('name') name: string): string {
+    return this.appService.getWorld(name);
+  }
+
   // 上传文件
   @Post('/upload')
   @UseInterceptors(

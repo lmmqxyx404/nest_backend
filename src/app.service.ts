@@ -6,7 +6,11 @@ export class AppService {
     return 'Hello World!';
   }
 
-  getWorld(): string {
-    return 'world';
+  getWorld(name: string): string {
+    return `world name is ${name}`;
+  }
+
+  postHello(obj: object): string {
+    return `world name is ${JSON.stringify(obj)}`;
   }
 }
