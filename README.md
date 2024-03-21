@@ -1,3 +1,13 @@
+#
+## 关于 post
+默认解析的时候，是解析 body 为 json格式
+传文件，一般是 form data
+
+## 常见注解
+### @POST @GET ...
+
+### @Body @Query @Param
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
