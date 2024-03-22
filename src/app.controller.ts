@@ -28,7 +28,7 @@ export class AppController {
   // 注意 post 方法默认解析的参数是 json,不是form_data
   @Post('/post')
   @UseInterceptors(FileInterceptor('name'))
-  postHello(@Body() obj: Student): string {
+  postHello(@Body() obj: Student): object {
     console.log(obj);
 
     return this.appService.postHello(obj);

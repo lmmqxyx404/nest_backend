@@ -10,7 +10,7 @@ export class AppService {
     return `world name is ${name}`;
   }
 
-  postHello(obj: object): string {
-    return `world name is ${JSON.stringify(obj)}`;
+  postHello(obj: object): object {
+    return {msg:`world name is ${JSON.stringify(obj)}`} 
   }
 }
