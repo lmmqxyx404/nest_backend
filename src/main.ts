@@ -10,9 +10,9 @@ function MiddleWareAll(req, res, next) {
 }
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // app.connectMicroservice<MicroserviceOptions>(grpcClientOptions);
+  app.connectMicroservice<MicroserviceOptions>(grpcClientOptions);
 
-  // await app.startAllMicroservices();
+  await app.startAllMicroservices();
   app.use(cors());
   app.use(MiddleWareAll);
   await app.listen(8000);
