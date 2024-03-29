@@ -13,6 +13,7 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>(grpcClientOptions);
 
   await app.startAllMicroservices();
+  
   app.use(cors());
   app.use(MiddleWareAll);
   await app.listen(8000);
