@@ -7,6 +7,8 @@ export const grpcClientOptions: ClientOptions = {
   options: {
     package: 'hero', // ['hero', 'hero2']
     protoPath: join(__dirname, './hero/hero.proto'), // ['./hero/hero.proto', './hero/hero2.proto']
+    // keep in mind that set the url to expose to call.
+    url: '0.0.0.0:6666',
     /* onLoadPackageDefinition: (pkg, server) => {
       new ReflectionService(pkg).addToServer(server);
     }, */
