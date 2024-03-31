@@ -6,10 +6,7 @@ export class TasksController {
   constructor(private readonly taskService: TasksService) {}
 
   @Get()
-  getHello(): object {
-    return this.taskService.getHello();
+  async getHello(): Promise<object> {
+    return await this.taskService.getHello();
   }
-
-  
-
 }

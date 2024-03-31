@@ -1,10 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { Cluster, clusterApiUrl, Connection, PublicKey } from '@solana/web3.js';
+import {
+  Cluster,
+  clusterApiUrl,
+  Connection,
+  Keypair,
+  PublicKey,
+} from '@solana/web3.js';
 import { encodeURL, createQR } from '@solana/pay';
 import BigNumber from 'bignumber.js';
 @Injectable()
 export class TasksService {
-  getHello(): object {
+  async getHello(): Promise<object> {
+    // getHello(): object {
+    await this.main();
+    // this.sample();
     return {
       data: [
         { value: 'jack', label: 'Jack' },
@@ -17,6 +26,9 @@ export class TasksService {
     };
   }
 
+  sample() {
+    console.log('sample');
+  }
   async main() {
     // Variable to keep state of the payment status
     let paymentStatus: string;
@@ -34,9 +46,11 @@ export class TasksService {
      *
      */
     console.log('2. 🛍 Simulate a customer checkout \n');
-    const recipient = new PublicKey('MERCHANT_WALLET');
+    const recipient = new PublicKey(
+      'CJksdzJWHJWTTGGNQ7pnufoGPNhsxN96sqP3VshAzU3N',
+    );
     const amount = new BigNumber(20);
-    const reference = 'ss'; // new Keypair().publicKey;
+    const reference = new Keypair().publicKey;
     const label = 'Jungle Cats store';
     const message = 'Jungle Cats store - your order - #001234';
     const memo = 'JC#4098';
@@ -54,7 +68,10 @@ export class TasksService {
       reference,
       label,
       message,
+
       memo,
     });
+
+    console.log(url);
   }
 }
