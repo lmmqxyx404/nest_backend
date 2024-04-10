@@ -1,4 +1,5 @@
 {
+  // "include": ["src/**/*.ts", "src/**/*.proto"],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
