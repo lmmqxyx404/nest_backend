@@ -13,12 +13,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.connectMicroservice<MicroserviceOptions>(grpcClientOptions);
   //配置swagger
- const swaggerOptions = new DocumentBuilder()
- .setTitle('商城API文档') //文档标题
- .setDescription('商城API文档') //文档描述
- .setVersion('1.0') //文档版本
- .addBasicAuth() //鉴权，可以输入token
- .build(); //创建
+  const swaggerOptions = new DocumentBuilder()
+    .setTitle('商城API文档') //文档标题
+    .setDescription('商城API文档') //文档描述
+    .setVersion('1.0') //文档版本
+    .addBasicAuth() //鉴权，可以输入token
+    .build(); //创建
+
   await app.startAllMicroservices();
   app.use(cors());
   app.use(MiddleWareAll);
